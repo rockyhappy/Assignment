@@ -78,8 +78,7 @@ class HomeScreen : Fragment() {
                             progressBar.stopShimmer()
                             progressBar.visibility = View.GONE
                             SwipeRefreshLayout.isRefreshing = states.isRefreshing
-//                            SwipeRefreshLayout.visibility = View.VISIBLE
-//                            recycler.visibility = View.VISIBLE
+
                         }
 //                        if (states.error.isNotEmpty()) {
 //                            Toast.makeText(requireContext(), states.error, Toast.LENGTH_SHORT)
@@ -96,8 +95,6 @@ class HomeScreen : Fragment() {
                             recycler.adapter = adapter
                             SwipeRefreshLayout.visibility = View.VISIBLE
                             recycler.visibility = View.VISIBLE
-//
-//
                         }
                     }
                 }
@@ -119,7 +116,7 @@ class HomeScreen : Fragment() {
             checkInternetAndLoadData()
             viewModel.changeRefreshState(false)
             binding.SwipeRefreshLayout.isRefreshing = false
-//            viewModel.filterProducts(searchEditText.toString())
+
         }
     }
 
@@ -149,11 +146,24 @@ class HomeScreen : Fragment() {
     }
 
     private fun setupSearchListeners() {
+        binding.clearSearch.setOnClickListener {
+            binding.etSearch.text.clear()
+            binding.etSearch2.text.clear()
+            searchEditText = ""
+            viewModel.filterProducts("")
+        }
+        binding.clearSearch2.setOnClickListener {
+            binding.etSearch.text.clear()
+            binding.etSearch2.text.clear()
+            searchEditText = ""
+            viewModel.filterProducts("")
+        }
         binding.etSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 Log.d("Search", "User typed: $s")
+                binding.clearSearch2.visibility = if (s.isNullOrEmpty()) View.GONE else View.VISIBLE
                 if (binding.etSearch2.text.toString() != s.toString()) {
                     binding.etSearch2.setText(s)
                     searchEditText= s
@@ -162,12 +172,14 @@ class HomeScreen : Fragment() {
             }
 
             override fun afterTextChanged(s: Editable) {}
+
         })
         binding.etSearch2.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 Log.d("Search", "User typed: $s")
+                binding.clearSearch.visibility = if (s.isNullOrEmpty()) View.GONE else View.VISIBLE
                 if (binding.etSearch.text.toString() != s.toString()) {
                     binding.etSearch.setText(s)
                     searchEditText=s

@@ -103,19 +103,30 @@
                             android:layout_width="36dp"
                             android:layout_height="36dp"
                             android:backgroundTint="@color/eng_content_neutral_primary_black"
-                            android:padding="2dp"
+                            android:padding="1dp"
+                            android:layout_marginTop="2dp"
                             android:src="@drawable/ic_search" />
 
                         <EditText
                             android:id="@+id/etSearch"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:background="@null"
+                            android:layout_weight="1"
                             android:hint="Search here..."
                             android:padding="8dp"
                             android:textColor="@color/eng_content_neutral_primary_black"
                             android:textColorHint="@color/eng_content_neutral_primary_black"
                             android:textSize="16sp" />
+                        <ImageView
+                            android:id="@+id/clearSearch"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:visibility="gone"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="4dp"
+                            android:padding="2dp"
+                            android:src="@drawable/ic_cross" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -178,7 +189,8 @@
 
                             <EditText
                                 android:id="@+id/etSearch2"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
                                 android:layout_height="wrap_content"
                                 android:background="@null"
                                 android:hint="Search here..."
@@ -186,6 +198,15 @@
                                 android:textColor="@color/eng_content_neutral_primary_black"
                                 android:textColorHint="@color/eng_content_neutral_primary_black"
                                 android:textSize="16sp" />
+                            <ImageView
+                                android:id="@+id/clearSearch2"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:visibility="gone"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginStart="4dp"
+                                android:padding="2dp"
+                                android:src="@drawable/ic_cross" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
