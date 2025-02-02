@@ -1,5 +1,6 @@
 package com.devrachit.swipeassignment.presentation.screens.homeScreen
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -15,11 +17,14 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.devrachit.swipeassignment.R
 import com.devrachit.swipeassignment.data.models.ProductItem
 import com.devrachit.swipeassignment.databinding.FragmentHomeScreenBinding
+import com.devrachit.swipeassignment.databinding.LayoutDialogItemDetailBinding
 import com.devrachit.swipeassignment.presentation.adapters.OnClickListener
 import com.devrachit.swipeassignment.presentation.adapters.ProductListAdapter
+import com.devrachit.swipeassignment.utility.isConnected
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
@@ -31,21 +36,18 @@ import kotlin.math.abs
 class HomeScreen : Fragment() {
 
     private lateinit var binding: FragmentHomeScreenBinding
+    var searchEditText: CharSequence = ""
 
     private val viewModel: HomeScreenViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d("Home", "onCreate: Called")
-        context?.let {
-            viewModel.getData(true, it)
-        }
+        checkInternetAndLoadData()
     }
 
     override fun onResume() {
         super.onResume()
-        context?.let {
-            viewModel.getData(true, it)
-        }
+        checkInternetAndLoadData()
     }
 
     override fun onCreateView(
@@ -85,10 +87,10 @@ class HomeScreen : Fragment() {
 //                        }
                         if (states.productsList.isNotEmpty()) {
                             Log.d("HomeScreen adapter", "onCreateView: ${states.productsList}")
-                            val dataList :List<ProductItem> = states.filteredList
+                            val dataList: List<ProductItem> = states.filteredList
                             val adapter = ProductListAdapter(dataList, object : OnClickListener {
                                 override fun onClick(index: Int) {
-                                    // Handle click
+                                    showItemDetailsDialog(dataList[index])
                                 }
                             })
                             recycler.adapter = adapter
@@ -104,16 +106,20 @@ class HomeScreen : Fragment() {
 
         return binding.root
     }
+
     private fun refresh() {
         lifecycleScope.launch {
-
+            binding.apply {
+                etSearch.text.clear()
+                etSearch2.text.clear()
+            }
             binding.SwipeRefreshLayout.isRefreshing = true
-
-            delay(1200)
+            delay(1000)
             viewModel.changeRefreshState(true)
-            viewModel.getData(true, requireContext())
+            checkInternetAndLoadData()
             viewModel.changeRefreshState(false)
             binding.SwipeRefreshLayout.isRefreshing = false
+//            viewModel.filterProducts(searchEditText.toString())
         }
     }
 
@@ -150,6 +156,7 @@ class HomeScreen : Fragment() {
                 Log.d("Search", "User typed: $s")
                 if (binding.etSearch2.text.toString() != s.toString()) {
                     binding.etSearch2.setText(s)
+                    searchEditText= s
                     viewModel.filterProducts(s.toString())
                 }
             }
@@ -163,11 +170,51 @@ class HomeScreen : Fragment() {
                 Log.d("Search", "User typed: $s")
                 if (binding.etSearch.text.toString() != s.toString()) {
                     binding.etSearch.setText(s)
+                    searchEditText=s
                     viewModel.filterProducts(s.toString())
                 }
             }
 
             override fun afterTextChanged(s: Editable) {}
         })
+    }
+
+    private fun showItemDetailsDialog(product: ProductItem) {
+        val binding = LayoutDialogItemDetailBinding.inflate(LayoutInflater.from(context))
+        val dialogBuilder = AlertDialog.Builder(requireContext(), R.style.CustomDialog)
+            .setView(binding.root)
+
+
+        val dialog = dialogBuilder.create()
+        dialog.show()
+        binding.itemName.text =  product.productName
+        binding.itemPrice.text = "₹" + product.price.toString()
+        binding.itemType.text = "Type: " + product.productType
+        binding.itemTax.text = "Tax: " + product.tax.toString()
+        Glide.with(binding.itemImage.context).load(product.image).placeholder(R.drawable.picture)
+            .into(binding.itemImage)
+
+
+    }
+    private fun showNoInternetDialog() {
+        val dialogView = LayoutInflater.from(context).inflate(R.layout.layout_no_internet_dialog, null)
+        val dialogBuilder = AlertDialog.Builder(requireContext(), R.style.CustomDialog)
+            .setView(dialogView)
+
+        val dialog = dialogBuilder.create()
+        dialog.show()
+
+        dialogView.findViewById<Button>(R.id.retry).setOnClickListener {
+            dialog.dismiss()
+            checkInternetAndLoadData()
+        }
+    }
+    private fun checkInternetAndLoadData() {
+        context?.let {
+            if (!isConnected(it)) {
+                showNoInternetDialog()
+            }
+            viewModel.getData(true, it)
+        }
     }
 }

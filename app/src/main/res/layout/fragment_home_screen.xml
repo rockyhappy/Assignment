@@ -21,7 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_custom_card"
-            app:contentScrim="@color/eng_surface_card_normal_default"
+            android:backgroundTint="@color/eng_surface_card_normal_pressed"
+            app:contentScrim="@color/eng_surface_card_normal_pressed"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             app:titleEnabled="false">
 
@@ -31,6 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_custom_card"
+                android:backgroundTint="@color/eng_surface_card_normal_pressed"
                 android:orientation="vertical">
 
 
@@ -126,7 +128,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/transparent"
-                android:backgroundTint="@color/transparent"
+                android:backgroundTint="@color/eng_surface_card_normal_pressed"
                 android:visibility="invisible"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
@@ -135,6 +137,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/bg_custom_card"
+                    android:backgroundTint="@color/eng_surface_card_normal_pressed"
                     android:orientation="horizontal"
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp">

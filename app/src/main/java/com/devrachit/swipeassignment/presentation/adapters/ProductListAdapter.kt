@@ -38,8 +38,8 @@ class ProductListAdapter(private val productList: List<ProductItem>, private val
         }
 
         fun bind(product: ProductItem) {
-            binding.itemName.text = "Name: "+product.productName
-            binding.itemPrice.text = "Price: ₹"+product.price.toString()
+            binding.itemName.text = product.productName
+            binding.itemPrice.text = "₹"+product.price.toString()
             binding.itemType.text = "Type: "+product.productType
             binding.itemTax.text = "Tax: "+product.tax.toString()
             Glide.with(binding.itemImage.context).load(product.image).placeholder(R.drawable.picture).into(binding.itemImage)

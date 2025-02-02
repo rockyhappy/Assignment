@@ -22,31 +22,35 @@ data class HomeScreenUiStates(
     val isRefreshing: Boolean = false,
     var filteredList: List<ProductItem> = emptyList(),
 )
+
 class HomeScreenViewModel(
     private val getProductsUseCase: GetProductsUseCase,
-):ViewModel() {
+) : ViewModel() {
 
     private val _uiStates = MutableStateFlow(HomeScreenUiStates())
     val uiStates: StateFlow<HomeScreenUiStates> = _uiStates.asStateFlow()
 
     fun getData(isRefresh: Boolean, context: Context) {
-        viewModelScope.launch(Dispatchers.IO){
+        viewModelScope.launch(Dispatchers.IO) {
             getProductsUseCase(isRefresh).collectLatest {
-                when(it){
+                when (it) {
                     is Resource.Error -> {
                         //Handle Error
                         deactivateLoading()
                         Log.d("HomeScreenViewModel", "getData: ${it.message}")
                     }
+
                     is Resource.Loading -> {
                         //Handle Loading
                         activateLoading()
                         Log.d("HomeScreenViewModel", "getData: Loading")
                     }
+
                     is Resource.Success -> {
-                        it.data?.let{
+                        it.data?.let {
 //                            delay(1000)
-                            _uiStates.value = HomeScreenUiStates(productsList = it, filteredList = it)
+                            _uiStates.value =
+                                HomeScreenUiStates(productsList = it, filteredList = it)
                             deactivateLoading()
                         }
                         Log.d("HomeScreenViewModel", "getData: ${it.data}")
@@ -55,24 +59,30 @@ class HomeScreenViewModel(
             }
         }
     }
-    fun activateLoading(){
+
+    fun activateLoading() {
         _uiStates.value = _uiStates.value.copy(loading = true)
     }
-    fun deactivateLoading(){
+
+    fun deactivateLoading() {
         _uiStates.value = _uiStates.value.copy(loading = false)
     }
+
     fun filterProducts(query: String) {
-        val filtered= if (query.isEmpty()) {
+        val filtered = if (query.isEmpty()) {
             _uiStates.value.productsList
         } else {
             _uiStates.value.productsList.filter {
-                it.productName.contains(query, ignoreCase = true)
-                it.productType.contains(query, ignoreCase = true)
+                it.productName.contains(query, ignoreCase = true) || it.productType.contains(
+                    query,
+                    ignoreCase = true
+                )
             }
         }
         _uiStates.value = _uiStates.value.copy(filteredList = filtered)
     }
-    fun changeRefreshState(isRefreshing: Boolean){
+
+    fun changeRefreshState(isRefreshing: Boolean) {
         _uiStates.value = _uiStates.value.copy(isRefreshing = isRefreshing)
     }
 }
