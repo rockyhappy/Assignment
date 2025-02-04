@@ -101,9 +101,7 @@ class HomeScreen : Fragment() {
                             recycler.adapter = adapter
                             SwipeRefreshLayout.visibility = View.VISIBLE
                             recycler.visibility = View.VISIBLE
-                            if(isConnected(requireContext()))
-                                SnackBar(requireContext()).showSuccessSnack(binding.root, "Data Loaded Successfully")
-                            else
+                            if(!isConnected(requireContext()))
                                 SnackBar(requireContext()).showErrorSnack(binding.root, "No Internet Connection")
                         }
                     }

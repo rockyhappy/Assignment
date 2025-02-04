@@ -26,6 +26,8 @@ import com.devrachit.swipeassignment.utility.PermissionManager
 import com.devrachit.swipeassignment.utility.SnackBar
 import android.Manifest.permission.READ_MEDIA_IMAGES
 import android.Manifest.permission.READ_EXTERNAL_STORAGE
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.devrachit.swipeassignment.domain.models.UploadProductModel
 
 
 class AddProduct : BottomSheetDialogFragment() {
@@ -35,6 +37,8 @@ class AddProduct : BottomSheetDialogFragment() {
     private lateinit var imageListAdapter: ImageListAdapter
     private lateinit var imageList: MutableList<Uri>
     private lateinit var permissionLauncher: ActivityResultLauncher<String>
+    private val viewModel : AddProductViewModel by viewModel()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,6 +66,23 @@ class AddProduct : BottomSheetDialogFragment() {
             setupSpinner()
             setupImageRecycler()
             setupAddImagesButton()
+
+            postButton.setOnClickListener {
+                val productName = name.text.toString()
+                val price = price.text.toString()
+                val spinner = spinner.selectedItem.toString()
+                val tax = itemTax.text.toString()
+
+                val product = UploadProductModel(
+                    productName = productName,
+                    productType = spinner,
+                    price = price,
+                    tax = tax,
+                    files = imageList
+                )
+                viewModel.postProduct(requireContext(), product)
+            }
+
         }
     }
 

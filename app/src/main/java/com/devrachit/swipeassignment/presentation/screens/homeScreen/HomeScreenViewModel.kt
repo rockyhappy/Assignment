@@ -55,6 +55,9 @@ class HomeScreenViewModel(
                         }
                         Log.d("HomeScreenViewModel", "getData: ${it.data}")
                     }
+                    else -> {
+                        Log.d("HomeScreenViewModel", "getData: Else")
+                    }
                 }
             }
         }
