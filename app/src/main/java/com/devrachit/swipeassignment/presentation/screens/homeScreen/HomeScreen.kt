@@ -25,6 +25,7 @@ import com.devrachit.swipeassignment.databinding.FragmentHomeScreenBinding
 import com.devrachit.swipeassignment.databinding.LayoutDialogItemDetailBinding
 import com.devrachit.swipeassignment.presentation.adapters.OnClickListener
 import com.devrachit.swipeassignment.presentation.adapters.ProductListAdapter
+import com.devrachit.swipeassignment.utility.SnackBar
 import com.devrachit.swipeassignment.utility.isConnected
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.coroutines.delay
@@ -100,6 +101,10 @@ class HomeScreen : Fragment() {
                             recycler.adapter = adapter
                             SwipeRefreshLayout.visibility = View.VISIBLE
                             recycler.visibility = View.VISIBLE
+                            if(isConnected(requireContext()))
+                                SnackBar(requireContext()).showSuccessSnack(binding.root, "Data Loaded Successfully")
+                            else
+                                SnackBar(requireContext()).showErrorSnack(binding.root, "No Internet Connection")
                         }
                     }
                 }
@@ -121,6 +126,10 @@ class HomeScreen : Fragment() {
             checkInternetAndLoadData()
             viewModel.changeRefreshState(false)
             binding.SwipeRefreshLayout.isRefreshing = false
+            if(isConnected(requireContext()))
+                SnackBar(requireContext()).showSuccessSnack(binding.root, "Data Refreshed Successfully")
+            else
+                SnackBar(requireContext()).showErrorSnack(binding.root, "No Internet Connection")
 
         }
     }
@@ -230,7 +239,6 @@ class HomeScreen : Fragment() {
 
         val dialog = dialogBuilder.create()
         dialog.show()
-
         dialogView.findViewById<Button>(R.id.retry).setOnClickListener {
             dialog.dismiss()
             checkInternetAndLoadData()
@@ -243,6 +251,7 @@ class HomeScreen : Fragment() {
                 showNoInternetDialog()
             }
             viewModel.getData(true, it)
+
         }
     }
 }
