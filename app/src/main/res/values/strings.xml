@@ -25,4 +25,13 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         Sed ac vestibulum id ligula porta felis euismod semper.</string>
+    <string-array name="dropdown_items">
+        <item>Others</item>
+        <item>Electronics</item>
+        <item>Automobile</item>
+        <item>Hardware</item>
+        <item>Software</item>
+        <item>Stationary</item>
+        <item>Books</item>
+    </string-array>
 </resources>

@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.devrachit.swipeassignment.R
@@ -63,9 +64,13 @@ class HomeScreen : Fragment() {
             refresh()
         }
 
+
         lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 binding.apply {
+                    fabAddItem.setOnClickListener {
+                        findNavController().navigate(R.id.action_homeScreenFragment_to_bottomSheetFrag)
+                    }
                     scrollContent.visibility = View.VISIBLE
                     viewModel.uiStates.collectLatest { states ->
                         Log.d("HomeScreen ", "onCreateView: $states")
@@ -146,6 +151,14 @@ class HomeScreen : Fragment() {
     }
 
     private fun setupSearchListeners() {
+        binding.etSearch.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                viewModel.filterProducts(searchEditText.toString())
+                true
+            } else {
+                false
+            }
+        }
         binding.clearSearch.setOnClickListener {
             binding.etSearch.text.clear()
             binding.etSearch2.text.clear()
@@ -166,7 +179,7 @@ class HomeScreen : Fragment() {
                 binding.clearSearch2.visibility = if (s.isNullOrEmpty()) View.GONE else View.VISIBLE
                 if (binding.etSearch2.text.toString() != s.toString()) {
                     binding.etSearch2.setText(s)
-                    searchEditText= s
+                    searchEditText = s
                     viewModel.filterProducts(s.toString())
                 }
             }
@@ -182,7 +195,7 @@ class HomeScreen : Fragment() {
                 binding.clearSearch.visibility = if (s.isNullOrEmpty()) View.GONE else View.VISIBLE
                 if (binding.etSearch.text.toString() != s.toString()) {
                     binding.etSearch.setText(s)
-                    searchEditText=s
+                    searchEditText = s
                     viewModel.filterProducts(s.toString())
                 }
             }
@@ -199,7 +212,7 @@ class HomeScreen : Fragment() {
 
         val dialog = dialogBuilder.create()
         dialog.show()
-        binding.itemName.text =  product.productName
+        binding.itemName.text = product.productName
         binding.itemPrice.text = "₹" + product.price.toString()
         binding.itemType.text = "Type: " + product.productType
         binding.itemTax.text = "Tax: " + product.tax.toString()
@@ -208,8 +221,10 @@ class HomeScreen : Fragment() {
 
 
     }
+
     private fun showNoInternetDialog() {
-        val dialogView = LayoutInflater.from(context).inflate(R.layout.layout_no_internet_dialog, null)
+        val dialogView =
+            LayoutInflater.from(context).inflate(R.layout.layout_no_internet_dialog, null)
         val dialogBuilder = AlertDialog.Builder(requireContext(), R.style.CustomDialog)
             .setView(dialogView)
 
@@ -221,6 +236,7 @@ class HomeScreen : Fragment() {
             checkInternetAndLoadData()
         }
     }
+
     private fun checkInternetAndLoadData() {
         context?.let {
             if (!isConnected(it)) {

@@ -11,5 +11,18 @@
         android:id="@+id/homeScreenFragment"
         android:name="com.devrachit.swipeassignment.presentation.screens.homeScreen.HomeScreen"
         android:label="fragment_home_screen"
-        tools:layout="@layout/fragment_home_screen" />
+        tools:layout="@layout/fragment_home_screen" >
+
+        <action
+            android:id="@+id/action_homeScreenFragment_to_bottomSheetFrag"
+            app:destination="@id/bottomSheetFrag" />
+    </fragment>
+
+
+
+    <dialog
+        android:id="@+id/bottomSheetFrag"
+        android:name="com.devrachit.swipeassignment.presentation.screens.addProductScreen.AddProduct"
+        android:label="fragment_bottom_sheet"
+        tools:layout="@layout/fragment_add_product_list_dialog" />
 </navigation>

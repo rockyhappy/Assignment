@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_bottom_sheet"
+    android:backgroundTint="@color/eng_surface_card_normal_default"
+    android:elevation="150dp">
+
+
+    <ImageView
+        android:id="@+id/maximizeIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_maximise"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:backgroundTint="@color/eng_surface_stickeyelement"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/maximizeIcon">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:gravity="center"
+                android:text="Details"
+                android:textColor="@color/eng_content_neutral_primary_black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginBottom="12dp"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxStrokeColor="@color/eng_content_neutral_primary_black"
+                app:cursorColor="@color/eng_content_neutral_primary_black"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/eng_content_neutral_primary_black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:hint="Product Name"
+                    android:imeOptions="actionNext"
+                    android:inputType="textFilter"
+                    android:maxLines="1"
+                    android:paddingRight="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/eng_content_neutral_primary_black"
+                    android:textColorHint="@color/eng_content_neutral_primary_black" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginBottom="12dp"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxStrokeColor="@color/eng_content_neutral_primary_black"
+                app:cursorColor="@color/eng_content_neutral_primary_black"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/eng_content_neutral_primary_black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/price"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:hint="Price"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLines="1"
+                    android:paddingRight="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/eng_content_neutral_primary_black"
+                    android:textColorHint="@color/eng_content_neutral_primary_black" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="6dp"
+                android:paddingStart="6dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_spinner"
+                android:spinnerMode="dropdown" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginBottom="12dp"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxStrokeColor="@color/eng_content_neutral_primary_black"
+                app:cursorColor="@color/eng_content_neutral_primary_black"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/eng_content_neutral_primary_black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/item_tax"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginBottom="12dp"
+                    android:hint="Tax"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLines="1"
+                    android:paddingRight="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/eng_content_neutral_primary_black"
+                    android:textColorHint="@color/eng_content_neutral_primary_black" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:layout_marginStart="12dp"
+                android:gravity="center"
+                android:backgroundTint="@color/eng_surface_fixedelement"
+                android:text="Add Images +"
+                android:textColor="@color/eng_content_neutral_primary_black"
+                android:textSize="16sp"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/imageRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                tools:listitem="@layout/layout_image_item" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="58dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="12dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/eng_surface_fixedelement"
+                android:text="   Post Product   "
+                android:textColor="@color/eng_content_neutral_primary_black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+    <!--        <LinearLayout-->
+    <!--            android:id="@+id/linearLayout2BottomSheet"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_below="@id/linearLayout1BottomSheet"-->
+    <!--            android:layout_marginHorizontal="24dp"-->
+    <!--            android:layout_marginVertical="16dp"-->
+    <!--            android:background="@drawable/details_background"-->
+    <!--            android:orientation="vertical"-->
+    <!--            android:padding="8dp">-->
+
+    <!--            <RelativeLayout-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginHorizontal="4dp"-->
+    <!--                android:weightSum="3">-->
+
+    <!--                <TextView-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_alignParentStart="true"-->
+    <!--                    android:layout_gravity="center_vertical|start"-->
+    <!--                    android:fontFamily="@font/roboto_medium"-->
+    <!--                    android:text="Add Images (Optional)"-->
+
+    <!--                    android:textSize="20sp" />-->
+
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/addImageFiles"-->
+    <!--                    android:layout_width="32dp"-->
+    <!--                    android:layout_height="32dp"-->
+    <!--                    android:layout_alignParentEnd="true"-->
+    <!--                    android:layout_gravity="center_vertical|end"-->
+    <!--                    android:src="@drawable/add_icon"-->
+    <!--                    app:tint="@color/md_theme_primary" />-->
+    <!--            </RelativeLayout>-->
+
+    <!--            <androidx.recyclerview.widget.RecyclerView-->
+    <!--                android:id="@+id/imageRecycler"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:orientation="horizontal"-->
+    <!--                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"-->
+    <!--                tools:listitem="@layout/images_list_item" />-->
+    <!--        </LinearLayout>-->
+
+    <!--    <RelativeLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_below="@id/linearLayout2BottomSheet"-->
+    <!--        android:layout_centerHorizontal="true"-->
+    <!--        android:layout_gravity="center_horizontal"-->
+    <!--        android:layout_marginVertical="16dp">-->
+
+    <!--        <com.google.android.material.button.MaterialButton-->
+    <!--            android:id="@+id/postButton"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_centerHorizontal="true"-->
+    <!--            android:layout_margin="8dp"-->
+    <!--            android:paddingHorizontal="20dp"-->
+    <!--            android:paddingVertical="8dp"-->
+    <!--            android:text="Post"-->
+    <!--            android:textColor="@color/md_theme_onPrimary"-->
+    <!--            app:backgroundTint="@color/md_theme_primary" />-->
+
+    <!--        <com.google.android.material.progressindicator.CircularProgressIndicator-->
+    <!--            android:id="@+id/sendingProgress"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_centerInParent="true"-->
+    <!--            android:layout_marginHorizontal="64dp"-->
+    <!--            android:indeterminate="true"-->
+    <!--            android:visibility="gone"-->
+    <!--            />-->
+    <!--    </RelativeLayout>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

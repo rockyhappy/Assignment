@@ -13,10 +13,4 @@ val viewmodelModule = module {
 //    viewModel<BottomSheetFragViewModel> {
 //        BottomSheetFragViewModel(get())
 //    }
-//    viewModel<SearchScreenViewModel> {
-//        SearchScreenViewModel(get())
-//    }
-//    viewModel<ProductDetailViewModel> {
-//        ProductDetailViewModel(get())
-//    }
 }
