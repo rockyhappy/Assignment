@@ -36,13 +36,11 @@ class MainActivity : AppCompatActivity() {
         permissionCheckers.launchPermission(this, this)
         permissionCheckers.launchNotificationPermission(this, this)
 
-        // show the splash screen exit animation
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             splashScreen.setOnExitAnimationListener { splashScreenView ->
-                // goes up
                 ObjectAnimator.ofFloat(
                     splashScreenView,
-                    View.TRANSLATION_Y,
+                    View.TRANSLATION_X,
                     0f,
                     -splashScreenView.height.toFloat()
                 ).apply {

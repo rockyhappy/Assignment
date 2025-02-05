@@ -6,14 +6,10 @@
 <resources>
 
     <style name="Application.Splash" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenAnimatedIcon">@drawable/logo_light</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/swipe_logo_dark</item>
         <item name="windowSplashScreenBackground">#000000</item>
         <item name="postSplashScreenTheme">@style/Theme.SwipeAssignment</item>
     </style>
 
-    <style name="My.App.Splash" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenAnimatedIcon">@drawable/logo_light</item>
-        <item name="windowSplashScreenBackground">#000000</item>
-        <item name="postSplashScreenTheme">@style/Theme.SwipeAndroidAssignment</item>
-    </style>
+
 </resources>
