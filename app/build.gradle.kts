@@ -81,4 +81,12 @@ dependencies {
 
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.android)
+
+    debugImplementation("com.github.chuckerteam.chucker:library:4.0.0") // For Debug
+    releaseImplementation("com.github.chuckerteam.chucker:library-no-op:4.0.0") // No-op in release
+
+    implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.2")
+    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
+
+
 }

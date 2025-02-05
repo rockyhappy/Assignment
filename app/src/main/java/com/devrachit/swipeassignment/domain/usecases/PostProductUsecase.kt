@@ -20,36 +20,6 @@ class PostProductUseCase {
         context: Context,
     ) {
         try {
-            // transform the given inputs into the Request Body.
-//            val productName = uiState.productName.toRequestBody("text/plain".toMediaTypeOrNull())
-//            val productPrice =
-//                uiState.price.replace(",", "").toRequestBody("text/plain".toMediaTypeOrNull())
-//            val tax = uiState.tax.toRequestBody("text/plain".toMediaTypeOrNull())
-//            val type = uiState.productType.toRequestBody("text/plain".toMediaTypeOrNull())
-//
-//            // transform the given files Media into the Request Body.
-//            val fileParts = uiState.files.map {
-//                val file = File(FileUtils.getPath(context, it))
-//                val requestFile = file
-//                    .asRequestBody(context.contentResolver.getType(it)
-//                        ?.let { it1 -> it1.toMediaTypeOrNull() })
-//
-//                //create the Multipart from the given Uri's.
-//                MultipartBody.Part.createFormData("files[]", file.name, requestFile)
-//            }
-//            // get the send state after posting to the server.
-////            val sendState = remoteProductsRepo.postProduct(
-//                productName = productName,
-//                productType = type,
-//                price = productPrice,
-//                tax = tax,
-//                files = fileParts
-//            )
-//            // if it's success then close the bottom sheet.
-//            if (sendState.success) {
-//                Log.d("Product", "invoke: $sendState ")
-//            }
-//            emit(SendState(sentData = sendState))
 
             val workManager = WorkManager.getInstance(context)
             val inputData = Data.Builder()

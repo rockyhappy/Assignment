@@ -63,14 +63,14 @@ class PermissionManager {
                     if (isGranted) {
                         Toast.makeText(
                             context,
-                            "Hurray! U can Upload Images Now",
+                            "Permission Granted for Uploading Images",
                             Toast.LENGTH_SHORT
                         )
                             .show()
                     } else {
                         Toast.makeText(
                             context,
-                            "Oops Permission Not granted Cannot Upload Images",
+                            "Permission Not Granted Cannot Upload Images",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
@@ -92,14 +92,14 @@ class PermissionManager {
                     if (isGranted) {
                         Toast.makeText(
                             context,
-                            "Hurray! U can Upload Images Now",
+                            "Permission Granted for Uploading Images",
                             Toast.LENGTH_SHORT
                         )
                             .show()
                     } else {
                         Toast.makeText(
                             context,
-                            "Oops Permission Not granted Cannot Upload Images",
+                            "Permission Not Granted Cannot Upload Images",
                             Toast.LENGTH_SHORT
                         ).show()
                     }

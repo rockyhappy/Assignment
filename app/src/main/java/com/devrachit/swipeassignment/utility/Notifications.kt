@@ -24,7 +24,7 @@ class NotificationUtil(val context: Context) {
     fun postUploadNotification(id: Int, title: String, body: String) {
         val notification = Notification.Builder(context, channelId)
             .setChannelId(channelId)
-            .setSmallIcon(R.drawable.logo_light)
+            .setSmallIcon(R.drawable.app_logo)
             .setContentTitle(title)
             .setContentText(body)
             .setProgress(0, 100, true)
@@ -37,7 +37,7 @@ class NotificationUtil(val context: Context) {
     fun postSuccessNotification(title: String) {
         val notification = Notification.Builder(context, channelId)
             .setChannelId(channelId)
-            .setSmallIcon(R.drawable.logo_light)
+            .setSmallIcon(R.drawable.app_logo)
             .setContentTitle(title)
             .build()
         manager.notify(title.length + 1, notification)
