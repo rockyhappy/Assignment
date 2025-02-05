@@ -6,8 +6,7 @@ import android.app.NotificationManager
 import android.content.Context
 import com.devrachit.swipeassignment.R
 
-class Notifications {
-}
+
 class NotificationUtil(val context: Context) {
     val channelId = "UploadNotifications"
 
@@ -25,7 +24,7 @@ class NotificationUtil(val context: Context) {
     fun postUploadNotification(id: Int, title: String, body: String) {
         val notification = Notification.Builder(context, channelId)
             .setChannelId(channelId)
-            .setSmallIcon(R.mipmap.ic_launcher)
+            .setSmallIcon(R.drawable.logo_light)
             .setContentTitle(title)
             .setContentText(body)
             .setProgress(0, 100, true)
@@ -38,7 +37,7 @@ class NotificationUtil(val context: Context) {
     fun postSuccessNotification(title: String) {
         val notification = Notification.Builder(context, channelId)
             .setChannelId(channelId)
-            .setSmallIcon(R.mipmap.ic_launcher)
+            .setSmallIcon(R.drawable.logo_light)
             .setContentTitle(title)
             .build()
         manager.notify(title.length + 1, notification)

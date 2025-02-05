@@ -203,6 +203,15 @@
                 android:textColor="@color/eng_content_neutral_primary_black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/eng_content_neutral_primary_black"
+                android:visibility="visible" />
         </LinearLayout>
 
 
@@ -216,81 +225,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-    <!--        <LinearLayout-->
-    <!--            android:id="@+id/linearLayout2BottomSheet"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_below="@id/linearLayout1BottomSheet"-->
-    <!--            android:layout_marginHorizontal="24dp"-->
-    <!--            android:layout_marginVertical="16dp"-->
-    <!--            android:background="@drawable/details_background"-->
-    <!--            android:orientation="vertical"-->
-    <!--            android:padding="8dp">-->
-
-    <!--            <RelativeLayout-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_marginHorizontal="4dp"-->
-    <!--                android:weightSum="3">-->
-
-    <!--                <TextView-->
-    <!--                    android:layout_width="wrap_content"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    android:layout_alignParentStart="true"-->
-    <!--                    android:layout_gravity="center_vertical|start"-->
-    <!--                    android:fontFamily="@font/roboto_medium"-->
-    <!--                    android:text="Add Images (Optional)"-->
-
-    <!--                    android:textSize="20sp" />-->
-
-    <!--                <ImageView-->
-    <!--                    android:id="@+id/addImageFiles"-->
-    <!--                    android:layout_width="32dp"-->
-    <!--                    android:layout_height="32dp"-->
-    <!--                    android:layout_alignParentEnd="true"-->
-    <!--                    android:layout_gravity="center_vertical|end"-->
-    <!--                    android:src="@drawable/add_icon"-->
-    <!--                    app:tint="@color/md_theme_primary" />-->
-    <!--            </RelativeLayout>-->
-
-    <!--            <androidx.recyclerview.widget.RecyclerView-->
-    <!--                android:id="@+id/imageRecycler"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:orientation="horizontal"-->
-    <!--                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"-->
-    <!--                tools:listitem="@layout/images_list_item" />-->
-    <!--        </LinearLayout>-->
-
-    <!--    <RelativeLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_below="@id/linearLayout2BottomSheet"-->
-    <!--        android:layout_centerHorizontal="true"-->
-    <!--        android:layout_gravity="center_horizontal"-->
-    <!--        android:layout_marginVertical="16dp">-->
-
-    <!--        <com.google.android.material.button.MaterialButton-->
-    <!--            android:id="@+id/postButton"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_centerHorizontal="true"-->
-    <!--            android:layout_margin="8dp"-->
-    <!--            android:paddingHorizontal="20dp"-->
-    <!--            android:paddingVertical="8dp"-->
-    <!--            android:text="Post"-->
-    <!--            android:textColor="@color/md_theme_onPrimary"-->
-    <!--            app:backgroundTint="@color/md_theme_primary" />-->
-
-    <!--        <com.google.android.material.progressindicator.CircularProgressIndicator-->
-    <!--            android:id="@+id/sendingProgress"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_centerInParent="true"-->
-    <!--            android:layout_marginHorizontal="64dp"-->
-    <!--            android:indeterminate="true"-->
-    <!--            android:visibility="gone"-->
-    <!--            />-->
-    <!--    </RelativeLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

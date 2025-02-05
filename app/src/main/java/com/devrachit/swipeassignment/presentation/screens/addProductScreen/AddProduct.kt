@@ -26,8 +26,19 @@ import com.devrachit.swipeassignment.utility.PermissionManager
 import com.devrachit.swipeassignment.utility.SnackBar
 import android.Manifest.permission.READ_MEDIA_IMAGES
 import android.Manifest.permission.READ_EXTERNAL_STORAGE
+import android.app.AlertDialog
+import androidx.collection.emptyLongSet
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import com.bumptech.glide.Glide
+import com.devrachit.swipeassignment.data.models.ProductItem
+import com.devrachit.swipeassignment.databinding.LayoutDialogItemDetailBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.devrachit.swipeassignment.domain.models.UploadProductModel
+import com.devrachit.swipeassignment.presentation.adapters.OnImageClickListener
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 
 class AddProduct : BottomSheetDialogFragment() {
@@ -66,26 +77,21 @@ class AddProduct : BottomSheetDialogFragment() {
             setupSpinner()
             setupImageRecycler()
             setupAddImagesButton()
-
-            postButton.setOnClickListener {
-                val productName = name.text.toString()
-                val price = price.text.toString()
-                val spinner = spinner.selectedItem.toString()
-                val tax = itemTax.text.toString()
-
-                val product = UploadProductModel(
-                    productName = productName,
-                    productType = spinner,
-                    price = price,
-                    tax = tax,
-                    files = imageList
-                )
-                viewModel.postProduct(requireContext(), product)
+            onClickListener()
+            lifecycleScope.launch{
+                viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    viewModel.uiStates.collectLatest {
+                        if (it.loading) {
+                            showLoadingDialog()
+                        }
+                        else{
+                            hindLoadingDialog()
+                        }
+                    }
+                }
             }
-
         }
     }
-
 
 
 
@@ -165,8 +171,88 @@ class AddProduct : BottomSheetDialogFragment() {
     }
     private fun setupImageRecycler() {
         imageList = mutableListOf()
-        imageListAdapter = ImageListAdapter(imageList)
+        imageListAdapter = ImageListAdapter(imageList, object : OnImageClickListener {
+            override fun onImageClick(uri: Uri) {
+                showItemDetailsDialog(uri)
+            }
+
+            override fun onRemoveImageClick(uri: Uri) {
+                imageList.remove(uri)
+                imageListAdapter.notifyDataSetChanged()
+            }
+        })
         binding.imageRecycler.adapter = imageListAdapter
+    }
+    fun onClickListener() {
+        binding.apply {
+            postButton.setOnClickListener {
+                val productName = name.text.toString()
+                val price = price.text.toString()
+                val spinner = spinner.selectedItem.toString()
+                val tax = itemTax.text.toString()
+
+                val product = UploadProductModel(
+                    productName = productName,
+                    productType = spinner,
+                    price = price,
+                    tax = tax,
+                    files = imageList
+                )
+                viewLifecycleOwner.lifecycleScope.launch {
+                    val response = viewModel.postProduct(requireContext(), product)
+                    if (response as Boolean) {
+                        clearFields()
+                        SnackBar(requireContext()).showSuccessSnack(
+                            binding.root,
+                            "Product Uploaded"
+                        )
+                    } else {
+                        SnackBar(requireContext()).showErrorSnack(
+                            binding.root,
+                            "Product Not Uploaded"
+                        )
+                    }
+                }
+            }
+        }
+    }
+    fun showLoadingDialog() {
+        binding.apply {
+            postButton.visibility = View.GONE
+            progressBar.visibility = View.VISIBLE
+        }
+    }
+    fun hindLoadingDialog() {
+        binding.apply {
+            postButton.visibility = View.VISIBLE
+            progressBar.visibility = View.GONE
+        }
+    }
+    fun clearFields() {
+        binding.apply {
+            name.text?.clear()
+            price.text?.clear()
+            itemTax.text?.clear()
+            imageList.clear()
+            imageListAdapter.notifyDataSetChanged()
+        }
+    }
+    private fun showItemDetailsDialog(uri: Uri) {
+        val binding = LayoutDialogItemDetailBinding.inflate(LayoutInflater.from(context))
+        val dialogBuilder = AlertDialog.Builder(requireContext(), R.style.CustomDialog)
+            .setView(binding.root)
+
+
+        val dialog = dialogBuilder.create()
+        dialog.show()
+        binding.itemName.visibility = View.GONE
+        binding.itemPrice.visibility = View.GONE
+        binding.itemType.visibility = View.GONE
+        binding.itemTax.visibility = View.GONE
+        Glide.with(binding.itemImage.context).load(uri).placeholder(R.drawable.picture)
+            .into(binding.itemImage)
+
+
     }
 
 }

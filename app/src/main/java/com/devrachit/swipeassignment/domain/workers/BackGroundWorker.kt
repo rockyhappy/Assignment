@@ -56,7 +56,6 @@ class BackGroundWorker(
                         .asRequestBody(context.contentResolver.getType(it)
                             ?.let { it1 -> it1.toMediaTypeOrNull() })
 
-                    //create the Multipart from the given Uri's.
                     MultipartBody.Part.createFormData("files[]", file.name, requestFile)
                 }
                 val sendState = remoteProductsRepo.postProduct(
@@ -66,7 +65,7 @@ class BackGroundWorker(
                     tax = tax,
                     files = fileParts
                 )
-                // if it's success then close the bottom sheet.
+                Log.e("Worker ", "doWork: $sendState")
                 if (sendState.success) {
                     Log.d("Product", "invoke: $sendState ")
                     if (permissionCheckers.checkNotificationPermission(context)) {

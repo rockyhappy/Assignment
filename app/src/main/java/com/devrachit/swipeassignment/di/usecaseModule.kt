@@ -12,10 +12,4 @@ val useCaseModule = module {
     single<PostProductUseCase> {
         PostProductUseCase()
     }
-//    single<LocalProductsUseCase> {
-//        LocalProductsUseCase(get())
-//    }
-//    single<GetProductByIdUseCase> {
-//        GetProductByIdUseCase(get())
-//    }
 }

@@ -9,8 +9,8 @@ import com.bumptech.glide.Glide
 import com.devrachit.swipeassignment.R
 import com.devrachit.swipeassignment.databinding.LayoutImageItemBinding
 
-class ImageListAdapter(private val imageList: List<Uri>) :
-    RecyclerView.Adapter<ImageListAdapter.ImageViewHolder>() {
+class ImageListAdapter(private val imageList: List<Uri>, private val OnImageClickListener: OnImageClickListener) :
+    RecyclerView.Adapter<ImageListAdapter.ImageViewHolder>(){
 
     inner class ImageViewHolder(val binding: LayoutImageItemBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -23,7 +23,12 @@ class ImageListAdapter(private val imageList: List<Uri>) :
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
         val imageUri = imageList[position]
-//        holder.binding.fileImage.setImageURI(imageUri)
+        holder.binding.removeImageBtn.setOnClickListener {
+            OnImageClickListener.onRemoveImageClick(imageUri)
+        }
+        holder.binding.fileImage.setOnClickListener {
+            OnImageClickListener.onImageClick(imageUri)
+        }
         Glide.with(holder.itemView)
             .load(imageUri)
             .override(250, 250)
@@ -34,4 +39,11 @@ class ImageListAdapter(private val imageList: List<Uri>) :
     override fun getItemCount(): Int {
         return imageList.size
     }
+
+
+}
+
+interface OnImageClickListener {
+    fun onImageClick(uri: Uri)
+    fun onRemoveImageClick(uri: Uri)
 }

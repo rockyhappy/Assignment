@@ -5,7 +5,4 @@ import org.koin.dsl.module
 import com.devrachit.swipeassignment.domain.workers.BackGroundWorker
 val workModule = module {
     workerOf(::BackGroundWorker)
-//    single<CustomWorkerFactory>{
-//        CustomWorkerFactory(get(),get())
-//    }
 }
