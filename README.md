@@ -61,3 +61,59 @@ The app follows **MVVM architecture** and uses best practices such as **Retrofit
         "tax": 18.0
     }
 ]
+```
+---
+## **Project Structure**
+```
+📦 SwipeProductsApp
+├─── 📂 data
+│   ├─── 📂 local
+│   │   ├─── 📂 databases
+│   │   └─── 📂 services
+│   ├─── 📂 models
+│   ├─── 📂 remote
+│   │   ├─── 📂 dto
+│   │   └─── 📂 services
+│   └─── 📂 repository
+│       ├─── 📂 local
+│       └─── 📂 remote
+├─── 📂 di
+├─── 📂 domain
+│   ├─── 📂 models
+│   ├─── 📂 repository
+│   │   ├─── 📂 local
+│   │   └─── 📂 remote
+│   ├─── 📂 sharedModels
+│   ├─── 📂 usecases
+│   └─── 📂 workers
+├─── 📂 presentation
+│   ├─── 📂 adapters
+│   └─── 📂 screens
+│       ├─── 📂 addProductScreen
+│       └─── 📂 homeScreen
+└─── 📂 utility
+ ```
+---
+## **📲 How to Run the App**
+1️⃣ **Clone the Repository**
+```sh
+git clone https://github.com/your-repo/swipe-products-app.git
+cd swipe-products-app
+```
+2️⃣ **Open in Android Studio**
+Open the project in Android Studio (latest version recommended).
+Sync Gradle and ensure dependencies are installed.
+3️⃣ **Run the App**
+Use an Android Emulator or a Physical Device.
+Make sure Internet is enabled for API calls.
+
+---
+## **📝 Additional Notes**
+### **Offline Support Implementation** 📴
+- If no internet, products added via the Add Product screen are stored in **Room DB**.
+- When internet is available, **WorkManager** syncs data in the background.
+
+### **Error Handling** ⚠
+- **Network errors** show a **Snackbar**.
+- **API failures** return a proper **Toast** message.
+- **Input validation** prevents incorrect data submission.
