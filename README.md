@@ -8,7 +8,7 @@ The app follows **MVVM architecture** and uses best practices such as **Retrofit
 
 ---
 ## APK
-[Apk-release](https://drive.google.com/file/d/1lvVMXCihXlCRE5n7hxXcAPg2HTFYGrek/view?usp=sharing)
+[Apk-release](https://drive.google.com/file/d/1gC_FlgOfgAbBHSUXta3xbuQXV5EiRAhv/view?usp=sharing)
 
 ## Screenshots
 
