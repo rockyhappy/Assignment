@@ -8,24 +8,52 @@ The app follows **MVVM architecture** and uses best practices such as **Retrofit
 
 ---
 ## APK
-[Apk-release](https://drive.google.com/file/d/1lvVMXCihXlCRE5n7hxXcAPg2HTFYGrek/view?usp=sharing)
+[Apk-release](https://drive.google.com/file/d/1gC_FlgOfgAbBHSUXta3xbuQXV5EiRAhv/view?usp=sharing)
 
 ## Screenshots
 
-<img src="https://github.com/rockyhappy/Kotlineary/assets/115190222/802da320-b173-4220-99a7-50ae513b267e" alt="News App Screenshot 1" width="150" >
-<img src="https://github.com/rockyhappy/Kotlineary/assets/115190222/8581716a-9a83-4921-b59a-7b128be2a080" alt="News App Screenshot 1" width="150" >
-<img src="https://github.com/rockyhappy/Kotlineary/assets/115190222/eb1af86a-96d7-42c2-a34b-d659be16f3d6" alt="News App Screenshot 1" width="150" >
-<img src="https://github.com/rockyhappy/Kotlineary/assets/115190222/c1626c9a-1571-4349-87b7-a3ab31f781e8" alt="News App Screenshot 1" width="150" >
-<img src="https://github.com/rockyhappy/Kotlineary/assets/115190222/ffc02186-5720-490b-9e50-c6b0240b718c" alt="News App Screenshot 1" width="150" >
-<img src="https://github.com/rockyhappy/Kotlineary/assets/115190222/1fe6d191-36ea-43fb-8971-4e5030dcaf2c" alt="News App Screenshot 1" width="150" >
-<img src="https://github.com/rockyhappy/Kotlineary/assets/115190222/83478117-b7d2-4c39-9c31-cdec155456ce" alt="News App Screenshot 1" width="150" >
-<img src="https://github.com/rockyhappy/Kotlineary/assets/115190222/c742ca31-54c9-4f3b-ba6c-599d3315cc4d" alt="News App Screenshot 1" width="150" >
-<img src="https://github.com/rockyhappy/Kotlineary/assets/115190222/f74052a5-b807-4cc0-bf79-e3dcc735e475" alt="News App Screenshot 1" width="150" >
+### Dark-Mode
+<img src="https://github.com/user-attachments/assets/0fd4d712-f8e9-478d-ba72-eb94ff6aaf25" alt="News App Screenshot 1" width="150" >
+<img src="https://github.com/user-attachments/assets/69ed7b0a-bfde-4c79-b6eb-c44c6fc741fc" alt="News App Screenshot 1" width="150" >
+<img src="https://github.com/user-attachments/assets/81a658b1-9385-4619-85aa-461846e96592" alt="News App Screenshot 1" width="150" >
+<img src="https://github.com/user-attachments/assets/7768f3bd-4030-4b92-9e3c-c8f2b548e5dd" alt="News App Screenshot 1" width="150" >
+<img src="https://github.com/user-attachments/assets/464c0732-94ff-450c-8db7-2f7dc0e9a98b" alt="News App Screenshot 1" width="150" >
+<img src="https://github.com/user-attachments/assets/30257316-9752-488c-8757-f6333ee373c2" alt="News App Screenshot 1" width="150" >
+<img src="https://github.com/user-attachments/assets/b05f7f64-3a5c-4cc2-b8a0-e338f746e819" alt="News App Screenshot 1" width="150" >
+<img src="https://github.com/user-attachments/assets/1d7710c4-c064-44da-9fee-3259a1327769" alt="News App Screenshot 1" width="150" >
+<img src="https://github.com/user-attachments/assets/fd5a27dd-3a06-43d7-9e80-4b9fdf807c98" alt="News App Screenshot 1" width="150" >
+<img src="https://github.com/user-attachments/assets/92469e61-ed06-464a-b25c-a489e6b33985" alt="News App Screenshot 1" width="150" >
+<img src="https://github.com/user-attachments/assets/25f3e77e-e64b-44c9-b0b2-33d39f629573" alt="News App Screenshot 1" width="150" >
+<img src="https://github.com/user-attachments/assets/85fbb6b6-aa1a-46fb-8cae-3c10071773f1" alt="News App Screenshot 1" width="150" >
+<img src="https://github.com/user-attachments/assets/47cdb2c5-6e03-46d9-a0c0-079c5f4c8352" alt="News App Screenshot 1" width="150" >
+
+### Light-Mode
+
+
+
+<img src="https://github.com/user-attachments/assets/487a58a8-fb1f-429b-8605-72f619116506" alt="News App Screenshot 1" width="150" >
+<img src="https://github.com/user-attachments/assets/ab9ab19c-2bf0-4a10-9d66-74686815be65" alt="News App Screenshot 1" width="150" >
+<img src="https://github.com/user-attachments/assets/ba069e43-2772-4dab-93ac-5b20da22e0d3" alt="News App Screenshot 1" width="150" >
+<img src="https://github.com/user-attachments/assets/22a24bf0-7ee7-46db-b8d8-ac14b7de971e" alt="News App Screenshot 1" width="150" >
+<img src="https://github.com/user-attachments/assets/45716a72-08bf-4b03-b084-68f9e030396f" alt="News App Screenshot 1" width="150" >
+<img src="https://github.com/user-attachments/assets/04df2eed-a829-4cac-b6e2-306ce8122bc8" alt="News App Screenshot 1" width="150" >
+<img src="https://github.com/user-attachments/assets/a4f94696-6a7c-4ec4-8319-673c455818c4" alt="News App Screenshot 1" width="150" >
+<img src="https://github.com/user-attachments/assets/931af3e1-2c38-4e35-96c5-d932021a8225" alt="News App Screenshot 1" width="150" >
+<img src="https://github.com/user-attachments/assets/9ccc2a4e-a135-420d-8a8a-de5fce1914eb" alt="News App Screenshot 1" width="150" >
+<img src="https://github.com/user-attachments/assets/23dcdd68-c2de-49fa-8ab1-c56f85d07b05" alt="News App Screenshot 1" width="150" >
+<img src="https://github.com/user-attachments/assets/9bfa4fa7-8a07-475e-83b7-20539d540d97" alt="News App Screenshot 1" width="150" >
+<img src="https://github.com/user-attachments/assets/f3b0bac4-398d-4c27-8f66-92b5bb0a81f3" alt="News App Screenshot 1" width="150" >
+
 
 ## Video
 
 
-https://github.com/rockyhappy/Kotlineary/assets/115190222/6878b8cf-aa97-4b5e-91a8-d4eae765d88d
+
+https://github.com/user-attachments/assets/b21c6683-d9b0-4c27-a595-21cdad4ddd65
+
+
+
+
 ---
 
 ## **📌 Features**
