@@ -1,8 +1,9 @@
 <resources>
+    <color name="lblq_banner_title">#AE3EC9</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="semi_transparent">#80000000</color>
     <color name="shimmerColor">#C2C2C2</color>
-
+    <color name="exam_banner_color">#FFF2E5</color>
     <color name="md_theme_primary">#65558F</color>
     <color name="md_theme_onPrimary">#FFFFFF</color>
     <color name="md_theme_primaryContainer">#E9DDFF</color>
