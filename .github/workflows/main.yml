@@ -1,18 +1,13 @@
 name: CI
 
-# Controls when the action will run 
 on: 
-  # Triggers the workflow on push or pull request events but only for the master branch
   push: 
     branches: [ master ]
   pull_request:
     branches: [ master ]
-  # Allows manual trigger from Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that run in sequence
 jobs:
-  # This workflow contains a single job called "lint"
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -35,17 +30,20 @@ jobs:
     needs: [lint]
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout the code 
-      uses: actions/checkout@v4
-      
-    - name: Grant execute permission to gradlew
-      run: chmod +x ./gradlew
+      - name: Checkout the code 
+        uses: actions/checkout@v4
 
-    - name: Run test
-      run: ./gradlew test
-      
-    - name: Upload the test report
-      uses: actions/upload-artifact@v4
-      with:
-        name: unit-test-report
-        path: app/build/reports/tests/testDebugUnitTest.html
+      - name: Grant execute permission to gradlew
+        run: chmod +x ./gradlew
+
+      - name: Run test
+        run: ./gradlew testDebug --no-build-cache --rerun-tasks
+
+      - name: Debug Test Reports
+        run: ls -R app/build/reports/tests/
+
+      - name: Upload the test report
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit-test-report
+          path: app/build/reports/tests/testDebugUnitTest/
