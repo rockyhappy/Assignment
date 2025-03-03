@@ -47,3 +47,26 @@ jobs:
         with:
           name: unit-test-report
           path: app/build/reports/tests/testDebugUnitTest/
+          
+  instrumentation-test:
+    needs: [unit-test]
+    runs-on: macos-latest
+    steps:
+      - name: Checkout the Code
+        uses: actions/checkout@v4
+        
+      - name: Grant execute permission to gradlew
+        run: chmod +x ./gradlew
+        
+      - name: Run Espresso Tests
+        uses: reactivecircus/android-emulator-runner@v4
+        with:
+          api-level: 29
+          script: ./gradlew connectedCheck
+          
+      - name: Upload Test Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: instrumentation_test_report
+          path: app/build/reports/androidTests/connected/
+        
