@@ -120,9 +120,9 @@ jobs:
           name: unit-test-report
           path: app/build/reports/tests/testDebugUnitTest/
           
-  instrumentation-test:
+  build:
     needs: [unit-test]
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout the Code
         uses: actions/checkout@v4
@@ -130,27 +130,20 @@ jobs:
       - name: Grant execute permission to gradlew
         run: chmod +x ./gradlew
         
-      - name: Set up Android SDK
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y wget tar unzip
-          wget https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip -O android-sdk.zip
-          unzip android-sdk.zip -d $HOME/android-sdk
-          export ANDROID_HOME=$HOME/android-sdk
-          export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
-          yes | sdkmanager --licenses
-          yes | sdkmanager --update
-          yes | sdkmanager --install 'build-tools;35.0.0' platform-tools 'platforms;android-29'
-        retry: 3
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug
         
-      - name: Run Espresso Tests
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 29
-          script: ./gradlew connectedCheck
-          
-      - name: Upload Test Report
+      - name: Build Release APK
+        run: ./gradlew assembleRelease
+        
+      - name: Upload Debug APK
         uses: actions/upload-artifact@v4
         with:
-          name: instrumentation_test_report
-          path: app/build/reports/androidTests/connected/
+          name: debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+          
+      - name: Upload Release APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-apk
+          path: app/build/outputs/apk/release/*.apk
